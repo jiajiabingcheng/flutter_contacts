@@ -1,5 +1,5 @@
-name: contacts_service_example
-description: Demonstrates how to use the contacts_service plugin.
+name: simple_permissions_example
+description: Demonstrates how to use the simple_permissions plugin.
 
 dependencies:
   flutter:
@@ -13,7 +13,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  contacts_service:
+  simple_permissions:
     path: ../
 
 # For information on the generic Dart part of this file, see the

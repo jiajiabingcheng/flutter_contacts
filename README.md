@@ -1,59 +1,67 @@
-# contacts_service
+# Simple Permissions
 
-[![pub package](https://img.shields.io/pub/v/contacts_service.svg)](https://pub.dartlang.org/packages/contacts_service)
-A Flutter plugin to access and manage the device's contacts.
+A new flutter plugin for checking and requesting permissions on iOs and Android.
 
+## Getting Started
 
-## Usage
-To use this plugin, add `contacts_service` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
+Make sure you add the needed permissions to your Android Manifest  [Permission](https://developer.android.com/reference/android/Manifest.permission.html)
+and Info.plist.
 
-Make sure you add the following permissions to your Android Manifest
-```
-<uses-permission android:name="android.permission.READ_CONTACTS" />
-<uses-permission android:name="android.permission.WRITE_CONTACTS" />
-```
-
-On iOS, make sure to set *NSContactsUsageDescription* in your Info.plist
-```
-<key>NSContactsUsageDescription</key>
-<string>This app requires contacts access to function properly.</string>
+```xml
+<uses-permission android:name="android.permission.RECORD_AUDIO" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 ```
 
-To check and request user permission to access contacts, I recommend using the following plugin : [flutter_simple_permissions](https://github.com/AppleEducate/flutter_simple_permissions)
+## API
+### List of currently available permissions
 
-## Example
-``` dart
-// Import package
-import 'package:contacts_service/contacts_service.dart';
+```dart
+enum Permission {
+  // Microphone
+  RecordAudio,
 
-// Get all contacts
-Iterable<Contact> contacts = await ContactsService.getContacts();
+  // Camera
+  Camera,
 
-// Get contacts matching a string
-Iterable<Contact> johns = await ContactsService.getContacts(query : "john");
+  // External Storage
+  WriteExternalStorage,
 
-// Add a contact
-// The contact must have a firstName / lastName to be successfully addded
-await ContactsService.addContact(newContact);
+  // Access Coarse Location (Android) / When In Use iOs
+  AccessCoarseLocation,
 
-//Delete a contact
-await ContactsService.deleteContact(contact);
+  // Access Fine Location (Android) / When In Use iOS
+  AccessFineLocation,
 
+  // Access Fine Location (Android) / When In Use iOS
+  WhenInUseLocation,
+
+  // Access Fine Location (Android) / Always Location iOS  
+  AlwaysLocation,
+  
+  // Read contacts (Android) / Contacts iOS
+  ReadContacts,
+  
+  // Write contacts (Android) / Contacts iOS
+  WriteContacts
+}
 ```
-<img src="doc/example.gif" width="300">
 
+```dart
+/// Permissions status enum (iOs)
+enum PermissionStatus { notDetermined, restricted, denied, authorized }
+```
 
-## Todo
-- [ ] update contact
-- [ ] add withTumbnails optional parameter in getContacts method
+### Methods
+```dart
+  /// Check a [permission] and return a [Future] with the result
+  static Future<bool> checkPermission(Permission permission);
 
+  /// Request a [permission] and return a [Future] with the result
+  static Future<bool> requestPermission(Permission permission);
 
-## Contributions
-
-Contributions are welcome! If you find a bug or want a feature, please fill an issue.
-
-If you want to contribute code please create a pull request.
-
-## Credits
-
-Heavily inspired from rt2zz's react native [plugin](https://github.com/rt2zz/react-native-contacts) 
+  /// Open app settings on Android and iOs
+  static Future<bool> openSettings();
+  
+  /// Get iOs permission status 
+  static Future<PermissionStatus> getPermissionStatus(Permission permission)
+```

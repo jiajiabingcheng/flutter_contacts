@@ -1,25 +1,10 @@
-## [0.0.6] - April 13th, 2018
+## [0.1.2] - 13.04.2018
+* added method for getting permission status from iOs
 
-* Add contact thumbnails
+## [0.1.1] - 26.03.2018
 
-## [0.0.5] - April 5th, 2018
+* Fix for Dart 2.0 compatibility
 
-* Fix with dart2 compatibility
+## [0.1.0] - 14.03.2018
 
-## [0.0.4] - February 1st, 2018.
-
-* Implement deleteContact(Contact c) for Android and iOS
-
-## [0.0.3] - January 31st, 2018.
-
-* Implement addContact(Contact c) for Android and iOS
-
-## [0.0.2] - January 30th, 2018.
-
-* Now retrieving contacts' prefixes and suffixes
-
-## [0.0.1] - January 30th, 2018.
-
-* All contacts can be retrieved
-* Contacts matching a string can be retrieved
-
+* Initial release

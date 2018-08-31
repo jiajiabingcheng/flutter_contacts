@@ -1,4 +1,4 @@
-package flutter.plugins.contactsservice.contactsserviceexample;
+package com.ethras.simplepermissionsexample;
 
 import android.os.Bundle;
 
