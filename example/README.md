@@ -1,8 +1,8 @@
-# simple_permissions_example
+# contacts_service_example
 
-Demonstrates how to use the simple_permissions plugin.
+Demonstrates how to use the contacts_service plugin.
 
 ## Getting Started
 
 For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+[documentation](http://flutter.io/).
